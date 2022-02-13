@@ -1,4 +1,4 @@
-package ru.job4j.accident.model;
+package ru.job4j.accident;
 
 import java.io.File;
 import java.util.Objects;

@@ -1,15 +1,15 @@
-package ru.job4j.accident.model;
+package ru.job4j.accident;
 
 import java.util.Objects;
 
-public class Inspector {
+public class User {
     private int id;
     private String name;
 
-    public Inspector() {
+    public User() {
     }
 
-    public Inspector(String name) {
+    public User(String name) {
         this.name = name;
     }
 
@@ -37,8 +37,8 @@ public class Inspector {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Inspector inspector = (Inspector) o;
-        return id == inspector.id;
+        User user = (User) o;
+        return id == user.id;
     }
 
     @Override
