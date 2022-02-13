@@ -18,28 +18,28 @@
 
 Использованы технологии:
 
-Spring
+- Spring
 
-Core
+- Core
 
-WebMVC
+- WebMVC
 
-Data JPA
+- Data JPA
 
-Security
+- Security
 
-Hibernate
+- Hibernate
 
-PostgreSQL
+- PostgreSQL
 
-Maven
+- Maven
 
-Tomcat
+- Tomcat
 
-JSP / JSTL
+- JSP / JSTL
 
-GitHub Actions
+- GitHub Actions
 
-Checkstyle
+- Checkstyle
 
-Log4j / Slf4j
+- Log4j / Slf4j
