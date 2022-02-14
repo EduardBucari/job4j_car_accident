@@ -13,57 +13,38 @@
           rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
           crossorigin="anonymous">
 
-    <title>Главная</title>
+    <title>Создать</title>
 
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value='/'/>">Главная</a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value='/'/>">Добавить инцидент</a>
-            </li>
         </ul>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <table class="table table-bordered border border-dark">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Наименование</th>
-                <th scope="col">Описание</th>
-                <th scope="col">Адрес</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <c:forEach items="${accindents}" var="accindent">
-            <tr>
-                <td>
-                    <c:out value="${accindent.id}"/>
-                </td>
-                <td>
-                    <c:out value="${accindent.name}"/>
-                </td>
-                <td>
-                    <c:out value="${accindent.text}"/>
-                </td>
-                <td>
-                    <c:out value="${accindent.address}"/>
-                </td>
-            </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-
+    <h4>Добавить инцидент</h4>
+    <div class="col-4">
+        <form action="<c:url value='/save'/>" method='POST'>
+            <div class="mb-3">
+                <label for="name" class="form-label">Название</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Описание</label>
+                <input type="text" class="form-control" name="text" id="text">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Адрес</label>
+                <input type="text" class="form-control" name="address" id="address">
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
     </div>
 
 </div>

@@ -9,16 +9,17 @@ import ru.job4j.accident.service.AccidentService;
 
 @Controller
 public class AccidentControl {
-
     private final AccidentService accidents;
 
     public AccidentControl(AccidentService accidents) {
         this.accidents = accidents;
     }
+
     @GetMapping(path = "/create")
     public String create() {
         return "/create";
     }
+
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
         accidents.create(accident);
