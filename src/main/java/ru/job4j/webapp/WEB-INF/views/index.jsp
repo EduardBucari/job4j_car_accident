@@ -19,13 +19,35 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-2">
-            <c:forEach items="${users}" var="user">
-                <ul class="list-group">
-                    <li class="list-group-item">Hello: ${user}</li>
-                </ul>
+        <table class="table table-bordered border border-dark">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Наименование</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Адрес</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <c:forEach items="${accindents}" var="accindent">
+            <tr>
+                <td>
+                    <c:out value="${accindent.id}"/>
+                </td>
+                <td>
+                    <c:out value="${accindent.name}"/>
+                </td>
+                <td>
+                    <c:out value="${accindent.text}"/>
+                </td>
+                <td>
+                    <c:out value="${accindent.address}"/>
+                </td>
+            </tr>
             </c:forEach>
-        </div>
+            </tbody>
+        </table>
 
     </div>
 
@@ -34,6 +56,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
