@@ -8,7 +8,12 @@ import java.util.Collection;
 
 @Service
 public class AccidentService {
-    private AccidentMem mem = AccidentMem.instOf();
+
+    private final AccidentMem mem;
+
+    public AccidentService(AccidentMem mem) {
+        this.mem = mem;
+    }
 
     public Collection<Accident> findAllAccidents() {
         return mem.findAllAccidents();
@@ -17,5 +22,4 @@ public class AccidentService {
     public void create(Accident accident) {
         mem.save(accident);
     }
-
 }

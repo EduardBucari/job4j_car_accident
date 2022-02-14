@@ -9,6 +9,7 @@ import ru.job4j.accident.service.AccidentService;
 
 @Controller
 public class AccidentControl {
+
     private final AccidentService accidents;
 
     public AccidentControl(AccidentService accidents) {
