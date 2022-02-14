@@ -30,18 +30,18 @@
 <div class="container">
     <h4>Редактировать инцидент</h4>
     <div class="col-4">
-        <form action="<c:url value='/save'/>" method='POST'>
+        <form action="<c:url value='/?id=${accident.id}'/>" method='POST'>
             <div class="mb-3">
                 <label for="name" class="form-label">Название</label>
-                <input type="text" class="form-control" name="name" id="name">
+                <input type="text" class="form-control" name="name" id="name" value="${accident.name}">
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Описание</label>
-                <input type="text" class="form-control" name="text" id="text">
+                <input type="text" class="form-control" name="text" id="text" value="${accident.text}">
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Адрес</label>
-                <input type="text" class="form-control" name="address" id="address">
+                <input type="text" class="form-control" name="address" id="address" value="${accident.address}">
             </div>
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>

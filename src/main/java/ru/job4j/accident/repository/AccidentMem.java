@@ -37,4 +37,9 @@ public class AccidentMem implements Store {
         }
         accidents.put(accident.getId(), accident);
     }
+
+    @Override
+    public Accident findById(int id) {
+        return accidents.get(id);
+    }
 }
