@@ -1,6 +1,7 @@
 package ru.job4j.accident.model;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Accident {
     private int id;
@@ -8,11 +9,14 @@ public class Accident {
     private String text;
     private String address;
 
-    public static Accident of(String name, String text, String address) {
+    private AccidentType accidentType;
+
+    public static Accident of(String name, String text, String address, AccidentType accidentType) {
         Accident accident = new Accident();
         accident.name = name;
         accident.text = text;
         accident.address = address;
+        accident.accidentType = accidentType;
         return accident;
     }
 
@@ -48,6 +52,14 @@ public class Accident {
         this.address = address;
     }
 
+    public AccidentType getAccidentType() {
+        return accidentType;
+    }
+
+    public void setAccidentType(AccidentType accidentType) {
+        this.accidentType = accidentType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -63,5 +75,16 @@ public class Accident {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Accident.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("text='" + text + "'")
+                .add("address='" + address + "'")
+                .add("accidentType=" + accidentType)
+                .toString();
     }
 }
