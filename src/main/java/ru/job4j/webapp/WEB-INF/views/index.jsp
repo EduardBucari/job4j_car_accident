@@ -40,6 +40,7 @@
                 <th scope="col">id</th>
                 <th scope="col">Наименование</th>
                 <th scope="col">Тип</th>
+                <th scope="col">Статья</th>
                 <th scope="col">Описание</th>
                 <th scope="col">Адрес</th>
                 <th scope="col">Редактировать</th>
@@ -57,6 +58,11 @@
                 </td>
                 <td>
                     <c:out value="${accindent.accidentType.name}"/>
+                </td>
+                <td>
+                    <c:forEach items="${accindent.rules}" var="rule">
+                        <c:out value="${rule.name}"/>
+                    </c:forEach>
                 </td>
                 <td>
                     <c:out value="${accindent.text}"/>
