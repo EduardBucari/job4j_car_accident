@@ -37,15 +37,14 @@ public class AccidentControl {
     public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         String[] ids = req.getParameterValues("rIds");
         typeService.setType(accident);
-        accidents.create(accident);
         ruleService.addRules(accident, ids);
+        accidents.create(accident);
         return "redirect:/";
     }
 
     @GetMapping("/update")
     public String update(@RequestParam("id") int id, Model model) {
-        Accident accident = accidents.findById(id);
-        model.addAttribute("accident", accident);
+        model.addAttribute("accident", accidents.findById(id));
         model.addAttribute("types", typeService.accidentTypes());
         model.addAttribute("rules", ruleService.findAllRules());
         return "/update";
