@@ -38,7 +38,6 @@ public class AccidentControl {
         String[] ids = req.getParameterValues("rIds");
         typeService.setType(accident);
         ruleService.addRules(accident, ids);
-        accidents.create(accident);
         return "redirect:/";
     }
 

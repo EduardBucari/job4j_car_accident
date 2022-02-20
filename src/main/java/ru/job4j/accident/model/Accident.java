@@ -1,18 +1,27 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.StringJoiner;
 
+@Entity
+@Table(name = "accidents")
 public class Accident {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String text;
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "accident_type_id")
     private AccidentType accidentType;
 
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Rule> rules = new HashSet<>();
 
     public static Accident of(String name, String text, String address, AccidentType accidentType) {
@@ -100,7 +109,8 @@ public class Accident {
                 .add("name='" + name + "'")
                 .add("text='" + text + "'")
                 .add("address='" + address + "'")
-                .add("accidentType=" + accidentType)
+                .add("accidentType=" + accidentType.getName())
+                .add("acc list" + rules)
                 .toString();
     }
 }

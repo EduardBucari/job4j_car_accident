@@ -3,7 +3,6 @@ package ru.job4j.accident.repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
@@ -14,7 +13,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Repository
+/**
+ * @Repository
+ */
 public class AccidentJdbcTemplate implements Store {
 
     private final JdbcTemplate jdbc;
@@ -106,18 +107,20 @@ public class AccidentJdbcTemplate implements Store {
 
     private Set<Rule> findRulesByIdFromAccidentRule(int id) {
         List<Integer> rules = jdbc.query(
-                "select rules_id from accidents_rules where accidents_id = ?",
+
+                "select rules_id from accidents_rules where accident_id = ?",
                 (rs, row) -> rs.getInt("rules_id"), id);
         return rules.stream().map(this::findRuleById).collect(Collectors.toSet());
     }
 
     public void updateAccidentRule(Accident accident, int id) {
         for (Rule rule : accident.getRules()) {
-            jdbc.update("insert into accidents_rules (accidents_id, rules_id) values (?, ?)",
+            jdbc.update("insert into accidents_rules (accident_id, rules_id) values (?, ?)",
                     id,
                     rule.getId());
         }
     }
+
     private void create(Accident accident) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(connection -> {
@@ -134,6 +137,7 @@ public class AccidentJdbcTemplate implements Store {
 
     }
 
+
     private void update(Accident accident) {
         jdbc.update("update accidents set name=?,text=?, address=?, accident_type_id=? where id=?",
                 accident.getName(),
@@ -141,7 +145,7 @@ public class AccidentJdbcTemplate implements Store {
                 accident.getAddress(),
                 accident.getAccidentType().getId(),
                 accident.getId());
-        jdbc.update("delete from accidents_rules where accidents_id=?",
+        jdbc.update("delete from accidents_rules where accident_id=?",
                 accident.getId());
         updateAccidentRule(accident, accident.getId());
     }

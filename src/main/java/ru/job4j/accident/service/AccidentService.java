@@ -2,28 +2,24 @@ package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.repository.AccidentMem;
-import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentHibernate;
+
 import java.util.Collection;
 
 @Service
 public class AccidentService {
 
-    private final AccidentJdbcTemplate jdbc;
+    private final AccidentHibernate hbm;
 
-    public AccidentService(AccidentJdbcTemplate jdbc) {
-        this.jdbc = jdbc;
+    public AccidentService(AccidentHibernate hbm) {
+        this.hbm = hbm;
     }
 
     public Collection<Accident> findAllAccidents() {
-        return jdbc.findAllAccidents();
-    }
-
-    public void create(Accident accident) {
-        jdbc.save(accident);
+        return hbm.findAllAccidents();
     }
 
     public Accident findById(int id) {
-        return jdbc.findAccidentById(id);
+        return hbm.findAccidentById(id);
     }
 }
