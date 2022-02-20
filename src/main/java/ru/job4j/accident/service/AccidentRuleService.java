@@ -1,36 +1,42 @@
 package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.AccidentHibernate;
+import ru.job4j.accident.repository.AccidentRepository;
+import ru.job4j.accident.repository.RulesRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class AccidentRuleService {
 
-    private final AccidentHibernate hbm;
+    private final RulesRepository rr;
+    private final AccidentRepository ar;
 
-    public AccidentRuleService(AccidentHibernate hbm) {
-        this.hbm = hbm;
+    public AccidentRuleService(RulesRepository rr, AccidentRepository ar) {
+        this.rr = rr;
+        this.ar = ar;
     }
 
 
     public Collection<Rule> findAllRules() {
-        return hbm.findAllRules();
+        List<Rule> rules = new ArrayList<>();
+        rr.findAll().forEach(rules::add);
+        return rules;
     }
 
     public Rule findRuleById(int id) {
-        return hbm.findRuleById(id);
+        return rr.findById(id).get();
     }
 
-    @Transactional
     public void addRules(Accident accident, String[] ids) {
         for (String id : ids) {
             accident.addRule(findRuleById(Integer.parseInt(id)));
         }
-        hbm.save(accident);
+
+        ar.save(accident);
     }
 }

@@ -17,11 +17,11 @@ public class Accident {
     private String text;
     private String address;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.DETACH)
     @JoinColumn(name = "accident_type_id")
     private AccidentType accidentType;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Set<Rule> rules = new HashSet<>();
 
     public static Accident of(String name, String text, String address, AccidentType accidentType) {
