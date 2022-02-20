@@ -24,6 +24,6 @@ public class AccidentService {
     }
 
     public Accident findById(int id) {
-        return ar.findById(id).get();
+        return ar.findById(id);
     }
 }

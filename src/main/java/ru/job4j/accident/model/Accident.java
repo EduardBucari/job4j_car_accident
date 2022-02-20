@@ -21,7 +21,7 @@ public class Accident {
     @JoinColumn(name = "accident_type_id")
     private AccidentType accidentType;
 
-    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.DETACH)
     private Set<Rule> rules = new HashSet<>();
 
     public static Accident of(String name, String text, String address, AccidentType accidentType) {
