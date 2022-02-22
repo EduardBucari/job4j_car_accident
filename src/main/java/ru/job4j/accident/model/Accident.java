@@ -8,6 +8,7 @@ import java.util.StringJoiner;
 
 @Entity
 @Table(name = "accidents")
+
 public class Accident {
 
     @Id

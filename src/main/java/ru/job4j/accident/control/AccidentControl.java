@@ -21,6 +21,7 @@ public class AccidentControl {
     private final AccidentRuleService ruleService;
 
     public AccidentControl(AccidentService accidents, AccidentTypeService typeService, AccidentRuleService ruleService) {
+
         this.accidents = accidents;
         this.typeService = typeService;
         this.ruleService = ruleService;

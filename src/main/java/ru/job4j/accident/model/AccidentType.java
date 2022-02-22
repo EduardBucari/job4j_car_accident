@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-
 @Entity
 @Table(name = "accident_types")
 public class AccidentType {

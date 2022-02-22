@@ -19,6 +19,7 @@ public class AccidentMem implements Store {
     private static final AtomicInteger ID = new AtomicInteger(2);
 
     public AccidentMem() {
+
         Accident accident1 = Accident.of("Превышение скорости", "Превышение скорости на 20 км/ч",
                 "ул. Виноградная д.1", AccidentType.of(1, "Две машины"));
         accident1.setId(1);

@@ -15,7 +15,6 @@ import java.util.Collection;
 public class AccidentHibernate implements Store {
 
     private final SessionFactory sf;
-
     public AccidentHibernate(SessionFactory sf) {
         this.sf = sf;
     }
