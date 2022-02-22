@@ -17,33 +17,38 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value='/'/>">Главная</a>
-            </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            Car Accident
+        </a>
+        <div class="row">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="<c:url value='/'/>">Главная</a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>
 
-<div class="container">
+<div class="container pt-3">
     <h4>Редактировать инцидент</h4>
     <div class="col-4">
         <form action="<c:url value='/?id=${accident.id}'/>" method='POST'>
-            <div class="mb-3">
+            <div class="pt-2">
                 <label for="name" class="form-label">Название</label>
                 <input type="text" class="form-control" name="name" id="name" value="${accident.name}">
             </div>
-            <div class="mb-3">
+            <div class="pt-2">
                 <label for="address" class="form-label">Описание</label>
                 <input type="text" class="form-control" name="text" id="text" value="${accident.text}">
             </div>
-            <div class="mb-3">
+            <div class="pt-2">
                 <label for="address" class="form-label">Адрес</label>
                 <input type="text" class="form-control" name="address" id="address" value="${accident.address}">
             </div>
-            <div>
+            <div class="pt-2">
                 <label for="accidentType" class="form-label">Тип нарушения</label>
                 <select class="form-select" name="accidentType.id" id="accidentType">
                     <c:forEach var="type" items="${types}">
@@ -51,7 +56,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <div>
+            <div class="pt-2">
                 <label for="rules" class="form-label">Статьи</label>
                 <select class="form-select" name="rIds" id="rules" multiple>
                     <c:forEach var="rule" items="${rules}" >
@@ -59,7 +64,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <div class="p-3">
+            <div class="pt-2">
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>
         </form>
