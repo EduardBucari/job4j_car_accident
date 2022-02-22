@@ -13,7 +13,7 @@
           rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
           crossorigin="anonymous">
 
-    <title>Создать инцидент</title>
+    <title>Редактировать</title>
 
 </head>
 <body>
@@ -35,7 +35,7 @@
 <div class="container pt-3">
     <h4>Редактировать инцидент</h4>
     <div class="col-4">
-        <form action="<c:url value='/?id=${accident.id}'/>" method='POST'>
+        <form action="save?id=${accident.id}" method='POST'>
             <div class="pt-2">
                 <label for="name" class="form-label">Название</label>
                 <input type="text" class="form-control" name="name" id="name" value="${accident.name}">

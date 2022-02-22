@@ -35,7 +35,7 @@
 <div class="container pt-3">
     <h4>Добавить инцидент</h4>
     <div class="col-4">
-        <form action="<c:url value='/'/>" method='POST'>
+        <form action="save" method='POST'>
             <div class="pt-2">
                 <label for="name" class="form-label">Название</label>
                 <input type="text" class="form-control" name="name" id="name">

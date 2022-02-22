@@ -18,75 +18,79 @@
 </head>
 <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    Car Accident
-                </a>
-                <div class="row">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="<c:url value='/'/>">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value='/create'/>">Добавить инцидент</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="container pt-3">
-            <div class="row">
-                    <table class="table table-bordered border-dark text-center">
-                        <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Наименование</th>
-                            <th scope="col">Тип</th>
-                            <th scope="col">Статья</th>
-                            <th scope="col">Описание</th>
-                            <th scope="col">Адрес</th>
-                            <th scope="col">Редактировать</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <c:forEach items="${accindents}" var="accindent">
-                            <tr>
-                                <td>
-                                    <c:out value="${accindent.id}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${accindent.name}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${accindent.accidentType.name}"/>
-                                </td>
-                                <td>
-                                    <c:forEach items="${accindent.rules}" var="rule">
-                                        <c:out value="${rule.name}"/>
-                                    </c:forEach>
-                                </td>
-                                <td>
-                                    <c:out value="${accindent.text}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${accindent.address}"/>
-                                </td>
-                                <td>
-                                    <a class="btn btn-outline-dark" href="<c:url value='/update?id=${accindent.id}'/>">редактировать</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-            </div>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand">
+            Car Accident
+        </a>
+        <div class="row">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" >
+                    <a class="nav-link active">  Приветствуем Вас : ${user.username}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="<c:url value='/'/>">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="create">Добавить инцидент</a>
+                </li>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-                crossorigin="anonymous"></script>
+<div class="container pt-3">
+    <div class="row">
+        <table class="table table-bordered border-dark text-center">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Наименование</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Статья</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Адрес</th>
+                <th scope="col">Редактировать</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <c:forEach items="${accindents}" var="accindent">
+                <tr>
+                    <td>
+                            ${accindent.id}
+                    </td>
+                    <td>
+                            ${accindent.name}
+                    </td>
+                    <td>
+                            ${accindent.accidentType.name}
+                    </td>
+                    <td>
+                        <c:forEach items="${accindent.rules}" var="rule">
+                            ${rule.name}
+                        </c:forEach>
+                    </td>
+                    <td>
+                            ${accindent.text}
+                    </td>
+                    <td>
+                            ${accindent.address}
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-dark"
+                           href="<c:url value='/update?id=${accindent.id}'/>">редактировать</a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
 </html>
