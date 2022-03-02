@@ -13,7 +13,7 @@
           rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
           crossorigin="anonymous">
 
-    <title>Авторизация</title>
+    <title>Регистрация</title>
 
 </head>
 <body>
@@ -25,7 +25,7 @@
         <div class="row">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/reg'/>">Регистрация</a>
+                    <a class="nav-link" href="<c:url value='/login'/>">Авторизация</a>
                 </li>
             </ul>
         </div>
@@ -37,10 +37,10 @@
         <div class="col-6 ">
             <div class="card" style="width: 100%">
                 <div class="card-header">
-                    <h3 class="text-center"> Авторизация</h3>
+                    <h3 class="text-center"> Регистрация</h3>
                 </div>
                 <div class="card-body">
-                    <form name='login' action="<c:url value='/login'/>" method='POST'>
+                    <form name='login' action="<c:url value='/reg'/>" method='POST'>
                         <div class="mb-3">
                             <label for="userName" class="form-label">Логин</label>
                             <input type="text" class="form-control" name="username" id="userName">
@@ -52,7 +52,6 @@
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Войти</button>
                         </div>
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                     <c:if test="${not empty errorMessage}">
                         <div style="color:red; font-weight: bold; margin: 30px 0px;">
